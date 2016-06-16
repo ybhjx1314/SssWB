@@ -12,7 +12,11 @@ import SVProgressHUD
 
 class HomeTableViewController: BaseTableViewController {
 
+    /// 视图模型
     private lazy var statusListViewModel = StatusListViewModel()
+    
+    ///  转场动画控制器
+    private lazy var photoAnimation  = PhotoBrowserAnimator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +36,12 @@ class HomeTableViewController: BaseTableViewController {
                 return
             }
             let vc = PhotoBrowserViewController(urls:urls,indexPath: indexPath)
-//            vc.urls = urls
-//            vc.selectedIndexPath = indexPath
+            
+            /// 自定义转场动画
+            // 设置代理
+            vc.transitioningDelegate = self?.photoAnimation
+            // 自定义转场动画
+            vc.modalPresentationStyle = UIModalPresentationStyle.Custom
             
             self?.presentViewController(vc, animated: true, completion: nil)
         }
@@ -127,7 +135,7 @@ class HomeTableViewController: BaseTableViewController {
 
 }
 // MARK: - 首页的扩展
-extension HomeTableViewController {
+extension HomeTableViewController  {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return statusListViewModel.statuses.count

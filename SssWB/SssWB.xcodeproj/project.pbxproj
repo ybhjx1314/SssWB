@@ -44,6 +44,7 @@
 		4C839BED1D11422D00A67383 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C839BEC1D11422D00A67383 /* UIColor+Extension.swift */; };
 		4C9D1E161CEB3CCC00A7F772 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9D1E151CEB3CCC00A7F772 /* BaseTableViewController.swift */; };
 		4CA944CD1CFFF8BB00DC427B /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA944CC1CFFF8BB00DC427B /* ComposeViewController.swift */; };
+		4CB1FF3F1D1291DA009DCC8B /* PhotoBrowserAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB1FF3E1D1291DA009DCC8B /* PhotoBrowserAnimator.swift */; };
 		4CBC5D511CF2EB0000BE6517 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5D501CF2EB0000BE6517 /* UserAccountViewModel.swift */; };
 		4CE9A6261CF93BE80090DFEB /* ZZ_RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A6251CF93BE80090DFEB /* ZZ_RefreshControl.swift */; };
 		4CE9A62A1CF93C2F0090DFEB /* ZZ_RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE9A6291CF93C2F0090DFEB /* ZZ_RefreshView.xib */; };
@@ -95,6 +96,7 @@
 		4C839BEC1D11422D00A67383 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		4C9D1E151CEB3CCC00A7F772 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		4CA944CC1CFFF8BB00DC427B /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		4CB1FF3E1D1291DA009DCC8B /* PhotoBrowserAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserAnimator.swift; sourceTree = "<group>"; };
 		4CBC5D501CF2EB0000BE6517 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		4CE9A6251CF93BE80090DFEB /* ZZ_RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZ_RefreshControl.swift; sourceTree = "<group>"; };
 		4CE9A6291CF93C2F0090DFEB /* ZZ_RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZ_RefreshView.xib; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			children = (
 				4C839BE81D112E3900A67383 /* PhotoBrowserViewController.swift */,
 				4C839BEA1D11392D00A67383 /* PhotoBrowserCell.swift */,
+				4CB1FF3E1D1291DA009DCC8B /* PhotoBrowserAnimator.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				4C349F981CE4946000B7C0E3 /* HomeTableViewController.swift in Sources */,
 				4C75F8F71D0E637D006F9DCF /* UITextView+Emoticon.swift in Sources */,
 				4CF297101CE46D720097B999 /* MainController.swift in Sources */,
+				4CB1FF3F1D1291DA009DCC8B /* PhotoBrowserAnimator.swift in Sources */,
 				4C839BEB1D11392D00A67383 /* PhotoBrowserCell.swift in Sources */,
 				4C054FC31CF49C73002DF5D2 /* Status.swift in Sources */,
 				4C3BB0C21CEC53F800A21E8F /* VistorLoginView.swift in Sources */,

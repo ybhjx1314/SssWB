@@ -99,7 +99,7 @@ class PhotoBrowserCell: UICollectionViewCell {
     private lazy var scrollView : UIScrollView = UIScrollView()
     
     ///  单张图片
-    private lazy var imageView : UIImageView = UIImageView()
+    lazy var imageView : UIImageView = UIImageView()
     
     ///  指示器
     private lazy var indicatorView  = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)

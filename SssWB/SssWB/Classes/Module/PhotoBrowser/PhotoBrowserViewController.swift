@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 
 private let PhotoBrowserCellID = "PhotoBrowserCellID"
 
@@ -16,6 +16,33 @@ class PhotoBrowserViewController: UIViewController {
     var urls :[NSURL]
     var selectedIndexPath : NSIndexPath
     
+    
+    // MARK: - 保存图片
+    
+    @objc func saveImage(){
+        // 1 拿到图片
+        
+        let path = collectionView.indexPathsForVisibleItems().last!
+        
+        let cell = collectionView.cellForItemAtIndexPath(path) as! PhotoBrowserCell
+        
+        guard let image = cell.imageView.image else {
+            SVProgressHUD.showWithStatus("你麻痹,网络不给力")
+            return
+        }
+        // 2 保存图像
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(PhotoBrowserViewController.image(_:didFinishSavingWithError:contextInfo:)), nil)
+        
+        
+    }
+//    - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo;
+    @objc private func image(image:UIImage ,didFinishSavingWithError error:NSError?,contextInfo : AnyObject){
+        printLog("OK ========== OK")
+        
+        let msg = (error == nil) ? "保存成功" : "保存失败"
+        
+        SVProgressHUD.showInfoWithStatus(msg)
+    }
     
     init(urls:[NSURL],indexPath:NSIndexPath){
         self.urls = urls
@@ -90,6 +117,12 @@ class PhotoBrowserViewController: UIViewController {
                 
             })
         }
+        
+        saveButton.rac_signalForControlEvents(.TouchUpInside).subscribeNext { [weak self](btn) in
+            
+            self?.saveImage()
+        }
+        
     }
     
     ///  准备collectionview
@@ -142,8 +175,6 @@ extension PhotoBrowserViewController : UICollectionViewDelegate,UICollectionView
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserCellID, forIndexPath: indexPath) as! PhotoBrowserCell
-        
-        cell.backgroundColor = UIColor.blackColor()
         cell.url = urls[indexPath.item]
         return cell
     }
