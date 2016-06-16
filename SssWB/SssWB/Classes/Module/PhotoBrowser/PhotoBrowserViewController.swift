@@ -71,7 +71,12 @@ class PhotoBrowserViewController: UIViewController {
         prepareCollectionView()
         
         // 3 监听方法
-        
+        closeBtn.rac_signalForControlEvents(.TouchUpInside).subscribeNext { [weak self](btn) in
+            
+            self?.dismissViewControllerAnimated(true, completion: {
+                
+            })
+        }
     }
     
     ///  准备collectionview
