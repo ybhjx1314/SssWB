@@ -19,6 +19,44 @@ class EmoticonViewModel {
         loadPackages()
     }
     
+    /// 添加最近的表情
+    ///
+    /// - parameter indexPath: indexPath
+    func favorite(indexPath: NSIndexPath) {
+        // 0. 如果是第0个分组，不参与排序
+        if indexPath.section == 0 {
+            return
+        }
+        
+        // 1. 获取表情符号
+        let em = emoticon(indexPath)
+        em.times++
+        
+        // 2. 将表情符号添加到第0组的首位
+        // 判断是否已经存在表情
+        if !packages[0].emoticons.contains(em) {
+            packages[0].emoticons.insert(em, atIndex: 0)
+        }
+        
+        // 3. 对数组进行排序 直接排序当前数组 sortInPlace
+        // Swift中，对尾随闭包，同时有返回值的又一个简单的写法
+        //        packages[0].emoticons.sortInPlace { (obj1, obj2) -> Bool in
+        //            return obj1.times > obj2.times
+        //        }
+        // $0 对应第一个参数，$1对应第二个参数，依次类推，return 可以省略
+        packages[0].emoticons.sortInPlace { $0.times > $1.times }
+        
+        // 4. 删除多余的表情 － 倒数第二个
+        if packages[0].emoticons.count > 21 {
+            packages[0].emoticons.removeAtIndex(19)
+        }
+        
+        // 数组的调试技巧
+        printLog(packages[0].emoticons as NSArray)
+        printLog(packages[0].emoticons.count)
+    }
+    
+    
     func loadPackages(){
         /// 取到包所在的位置
         

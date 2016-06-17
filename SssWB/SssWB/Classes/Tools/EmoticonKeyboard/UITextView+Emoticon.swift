@@ -21,14 +21,12 @@ extension UITextView {
         attribute.enumerateAttributesInRange(NSRange(location: 0,length: attribute.length), options: []) { (dict, range, _) in
             
             if let attribute = dict["NSAttachment"] as? EmoticonAttachment {
-                print("表情文字 \(attribute.chs)")
                 strM += attribute.chs
             } else {
                 let str = (attribute.string as NSString).substringWithRange(range)
                 
                 strM += str
             }
-            
             
         }
         return strM
@@ -70,5 +68,6 @@ extension UITextView {
         // 4 还原光标位置
         selectedRange = NSRange(location: rang.location + 1, length: 0)
         
+        delegate?.textViewDidChange!(self)
     }
 }
