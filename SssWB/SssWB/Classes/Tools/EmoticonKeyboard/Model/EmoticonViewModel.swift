@@ -30,7 +30,7 @@ class EmoticonViewModel {
         
         // 1. 获取表情符号
         let em = emoticon(indexPath)
-        em.times++
+        em.times += 1
         
         // 2. 将表情符号添加到第0组的首位
         // 判断是否已经存在表情
