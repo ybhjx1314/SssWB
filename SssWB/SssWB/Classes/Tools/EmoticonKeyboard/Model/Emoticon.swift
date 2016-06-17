@@ -35,6 +35,8 @@ class Emoticon: NSObject {
     var isRemove = false
     /// 空判断
     var isEmpty = false
+    /// 表情的使用频率
+    var times = 0
     
     init(isEmpty:Bool) {
         super.init()

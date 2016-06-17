@@ -15,6 +15,10 @@ class PhotoBrowserCell: UICollectionViewCell {
     var url : NSURL? {
         
         didSet {
+            
+            ///  重置scrollView
+            resetScrollView()
+            
             indicatorView.startAnimating()
             imageView.sd_setImageWithURL(url, placeholderImage: nil, options: [SDWebImageOptions.RetryFailed]) { (image, error, _, _) in
                 
@@ -27,6 +31,12 @@ class PhotoBrowserCell: UICollectionViewCell {
                 self.setImagePosition()
             }
         }
+    }
+    
+    private func resetScrollView(){
+        scrollView.contentSize = CGSizeZero
+        scrollView.contentOffset = CGPointZero
+        scrollView.contentInset = UIEdgeInsetsZero
     }
     
     
@@ -122,6 +132,9 @@ extension PhotoBrowserCell:UIScrollViewDelegate {
         
         scrollView.contentInset = UIEdgeInsets(top: offectY
             , left: offectX, bottom: 0, right: 0 )
+        
+        print("--------------")
+        print(scrollView.contentSize)
         
     }
     

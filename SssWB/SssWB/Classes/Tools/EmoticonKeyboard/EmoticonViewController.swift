@@ -40,8 +40,6 @@ class EmoticonViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.lightGrayColor()
-        ///  加载表情
-        viewModel.loadPackages()
         
         setupUI()
     }
@@ -162,6 +160,7 @@ extension EmoticonViewController : UICollectionViewDataSource , UICollectionView
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         selectedEmoticonBlock(emoticon: viewModel.emoticon(indexPath))
+        viewModel.favorite(indexPath)
     }
     
 }
@@ -198,11 +197,6 @@ private class EmoticonCell : UICollectionViewCell{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    ///  设置界面
-    private func setupUI(){
-        
-    }
-    
     // MARK: - 懒加载控件
     private lazy var emoticonBtn : UIButton = UIButton()
 }

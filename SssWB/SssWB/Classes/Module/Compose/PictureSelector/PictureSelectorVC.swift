@@ -14,7 +14,7 @@ let PictureMaxCount = 9
 
 class PictureSelectorVC: UICollectionViewController ,PictureSelectorCellDelegate{
     /// 照片数组
-    private lazy var  pictures = [UIImage]()
+    lazy var  pictures = [UIImage]()
     
     private var currentIndex = 0
     

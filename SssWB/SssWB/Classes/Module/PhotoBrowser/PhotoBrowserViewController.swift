@@ -82,8 +82,6 @@ class PhotoBrowserViewController: UIViewController {
         setupUI()
         
     }
- 
-    
     ///  设置界面细节
     private func setupUI(){
         // 1. 添加控件
@@ -100,27 +98,34 @@ class PhotoBrowserViewController: UIViewController {
         
         let viewDict = ["sa":saveButton,"cl":closeBtn]
         // 水平方向
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-8-[cl(80)]-(>=8)-[sa(80)]-8-|", options: [], metrics: nil, views: viewDict))
+        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-8-[cl(80)]-(>=8)-[sa(80)]-28-|", options: [], metrics: nil, views: viewDict))
         // 垂直方向
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[cl(35)]-8-|", options: [], metrics: nil, views: viewDict))
         view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:[sa(35)]-8-|", options: [], metrics: nil, views: viewDict))
         
-        view.addConstraint(NSLayoutConstraint(item: pageControl, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: pageControl, attribute: NSLayoutAttribute.CenterX, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.CenterX, multiplier: 1, constant: -10))
         view.addConstraint(NSLayoutConstraint(item: pageControl, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: view, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: -8))
         
         prepareCollectionView()
         preparePageControl()
         // 3 监听方法
-        closeBtn.rac_signalForControlEvents(.TouchUpInside).subscribeNext { [weak self](btn) in
+        ///  关闭按钮
+        closeBtn.rac_signalForControlEvents(.TouchUpInside).subscribeNext { [weak self] (btn) in
             
             self?.dismissViewControllerAnimated(true, completion: {
                 
             })
         }
-        
-        saveButton.rac_signalForControlEvents(.TouchUpInside).subscribeNext { [weak self](btn) in
+        ///  保存图片
+        saveButton.rac_signalForControlEvents(.TouchUpInside).subscribeNext { [weak self] (btn) in
             
             self?.saveImage()
+        }
+        pageControl.rac_signalForControlEvents(.ValueChanged).subscribeNext {[weak self] (control) in
+            let indexPath = NSIndexPath(forItem: control.currentPage, inSection: 0)
+            
+            self?.collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+            
         }
         
     }

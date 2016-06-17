@@ -103,15 +103,51 @@ class StatusPictureView: UICollectionView {
 
 extension StatusPictureView : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        print(cell?.frame)
+        
+        
         // 发送通知
         /**
          object: 发送的对象，可以传递一个数值，也可以是`自己`，通过 obj.属性
          userInfo: 可选字典，可以传递多个数值，object 必须有值
          */
-        NSNotificationCenter.defaultCenter().postNotificationName(HMStatusPictureViewSelectedPhotoNotification,
-                                                                  object: self,
-                                                                  userInfo: [HMStatusPictureViewSelectedPhotoIndexPathKey: indexPath,
+        NSNotificationCenter.defaultCenter().postNotificationName(HMStatusPictureViewSelectedPhotoNotification,object: self,
+                                                        userInfo:[HMStatusPictureViewSelectedPhotoIndexPathKey: indexPath,
                                                                     HMStatusPictureViewSelectedPhotoURLsKey: statusViewModel!.bmiddleURLs!])
+    }
+    // 根据index拿到 对应位置在屏幕上的 大小
+    func screenRect(indexPath:NSIndexPath) -> CGRect {
+        let cell = cellForItemAtIndexPath(indexPath)
+        
+        return  convertRect(cell!.frame, toCoordinateSpace: UIApplication.sharedApplication().keyWindow!)
+    }
+    
+    // 根据index拿到 对应位置在父视图上的 大小
+    func fullScreenRect(indexPath:NSIndexPath) -> CGRect{
+        
+        // 1 根据 拿到缩略图
+        let path = statusViewModel!.bmiddleURLs![indexPath.item].absoluteString
+        let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(path)
+        
+        // 2 根据图算比例
+        
+        // 2.1 计算比例
+        let scale = image.size.height / image.size.width
+        let w = UIScreen.mainScreen().bounds.width
+        let h = w * scale
+        
+        // 3 判断高度
+        var y = (UIScreen.mainScreen().bounds.height - h) * 0.5
+        if y < 0 {
+            // 图片高于屏幕 则置顶图片
+            y = 0
+        }
+        
+        
+        return CGRect(x: 0, y: y, width: w, height: h)
+        
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -137,15 +173,22 @@ private class StatusPictureViewCell :UICollectionViewCell {
     var imageURL: NSURL? {
         didSet {
             iconView.sd_setImageWithURL(imageURL)
+            
+            gitImageView.hidden = (imageURL!.absoluteString as NSString).pathExtension.lowercaseString != "gif"
+            
         }
     }
     
     // MARK: - 构造函数
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.whiteColor()
+        
         addSubview(iconView)
+        iconView.addSubview(gitImageView)
+        
+        
         iconView.zz_fill(self)
+        gitImageView.zz_AlignInner(type: zz_LocationType.RightButtom, referView: iconView, size: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -163,8 +206,12 @@ private class StatusPictureViewCell :UICollectionViewCell {
         
         return iv
     }()
-        
+    
+    /// 动态图标志
+    private lazy var gitImageView : UIImageView = UIImageView(image: UIImage(named: "timeline_image_gif"))
+    
 
+    
 }
 
 
