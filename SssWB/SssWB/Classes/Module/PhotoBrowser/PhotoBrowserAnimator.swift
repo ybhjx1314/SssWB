@@ -109,23 +109,6 @@ extension PhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
                         
                 })
         }
-        
-        // 获得容器试图
-        // 展现动画试图
-        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-        toView.alpha = 0
-        let contView = transitionContext.containerView()
-        contView?.addSubview(toView)
-        ///  开始present动画
-        UIView.animateWithDuration(transitionDuration(transitionContext), animations: {
-            
-            toView.alpha = 1;
-            
-        }) { (_) in
-            ///  关闭动画
-            transitionContext.completeTransition(true)
-        }
-        
     }
     ///  消失
     ///
