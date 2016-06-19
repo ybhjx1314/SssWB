@@ -28,7 +28,7 @@ class HomeTableViewController: BaseTableViewController {
         
         NSNotificationCenter.defaultCenter().addObserverForName(HMStatusPictureViewSelectedPhotoNotification, object: nil, queue: nil) { [weak self] (noti) -> Void in
             
-            guard let pickView = noti.object as?PhotoBrowserCell else {
+            guard let pickView = noti.object as? StatusPictureView else {
                 return
             }
             
@@ -48,7 +48,10 @@ class HomeTableViewController: BaseTableViewController {
             // 2.自定义转场动画
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
             // 3.计算动画位置
-            let fromRect = pickView.screen
+            let fromRect = pickView.screenRect(indexPath)
+            let toRect  = pickView.fullScreenRect(indexPath)
+            
+            self?.photoAnimation.prepareAnimator(fromRect, toRect: toRect, url: urls[indexPath.item])
             
             
             self?.presentViewController(vc, animated: true, completion: nil)

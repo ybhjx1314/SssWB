@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SDWebImage
 /// 转场动画提供者
 class PhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate{
     /// 是否是开始
@@ -81,6 +81,35 @@ extension PhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
     ///
     ///  - parameter transitionContext: transitionContext上下文
     private func presentAnimation(transitionContext: UIViewControllerContextTransitioning){
+        
+        // 1 将动画视图添加到容器视图上
+        transitionContext.containerView()?.addSubview(imageView)
+        self.imageView.frame  = self.fromRect
+        // 2 下载图像
+        imageView.sd_setImageWithURL(url, placeholderImage: nil, options: [SDWebImageOptions.RetryFailed], progress: { (current, total) in
+            print("\(current) \(total) \(NSThread.currentThread())")
+            }) { (image, error, _, _) in
+                
+                if error != nil {
+                    printLog(error, logError: true)
+                    transitionContext.completeTransition(true)
+                    return
+                }
+                
+                // 3 显示动画
+                UIView.animateWithDuration(self.transitionDuration(transitionContext), animations: { 
+                    // 动画属性
+                    self.imageView.frame = self.toRect
+                    }, completion: { (_) in
+                        let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
+                        transitionContext.containerView()?.addSubview(toView)
+                        
+                        self.imageView .removeFromSuperview()
+                        transitionContext.completeTransition(true)
+                        
+                })
+        }
+        
         // 获得容器试图
         // 展现动画试图
         let toView = transitionContext.viewForKey(UITransitionContextToViewKey)!
@@ -102,6 +131,9 @@ extension PhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
     ///
     ///  - parameter transitionContext: transitionContext上下文
     private func dismissAnimation(transitionContext: UIViewControllerContextTransitioning){
+        
+        
+        
         ///  拿到当前展现的试图-> fromView
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         

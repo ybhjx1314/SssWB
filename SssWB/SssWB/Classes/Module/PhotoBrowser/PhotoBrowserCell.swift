@@ -68,8 +68,8 @@ class PhotoBrowserCell: UICollectionViewCell {
         scrollView.minimumZoomScale = 0.5
         scrollView.maximumZoomScale = 2.0
         
-        
     }
+    
     
     private func setImagePosition(){
         
@@ -103,6 +103,8 @@ class PhotoBrowserCell: UICollectionViewCell {
         return CGSize(width: w, height: h)
         
     }
+    
+    
     
     
     /// 滚动试图
