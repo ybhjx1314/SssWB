@@ -28,6 +28,10 @@ class HomeTableViewController: BaseTableViewController {
         
         NSNotificationCenter.defaultCenter().addObserverForName(HMStatusPictureViewSelectedPhotoNotification, object: nil, queue: nil) { [weak self] (noti) -> Void in
             
+            guard let pickView = noti.object as?PhotoBrowserCell else {
+                return
+            }
+            
             guard let urls = noti.userInfo![HMStatusPictureViewSelectedPhotoURLsKey] as? [NSURL] else {
                 return
             }
@@ -38,10 +42,14 @@ class HomeTableViewController: BaseTableViewController {
             let vc = PhotoBrowserViewController(urls:urls,indexPath: indexPath)
             
             /// 自定义转场动画
-            // 设置代理
+            
+            // 1.设置代理
             vc.transitioningDelegate = self?.photoAnimation
-            // 自定义转场动画
+            // 2.自定义转场动画
             vc.modalPresentationStyle = UIModalPresentationStyle.Custom
+            // 3.计算动画位置
+            let fromRect = pickView.screen
+            
             
             self?.presentViewController(vc, animated: true, completion: nil)
         }
@@ -150,7 +158,8 @@ extension HomeTableViewController  {
         /// 3 设置cellmodel
         cell.statusViewModel = viewModel
         
-        if (indexPath.row == statusListViewModel.statuses.count - 1) && !pullupView.isAnimating() {             printLog("该加载数据了")
+        if (indexPath.row == statusListViewModel.statuses.count - 1) && !pullupView.isAnimating() {
+            printLog("该加载数据了")
             pullupView.startAnimating()
             loadData()
         }

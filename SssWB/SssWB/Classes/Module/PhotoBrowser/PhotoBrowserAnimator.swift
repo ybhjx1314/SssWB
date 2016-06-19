@@ -10,8 +10,32 @@ import UIKit
 
 /// 转场动画提供者
 class PhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate{
-
+    /// 是否是开始
     var isPresent = false
+    
+    /// 动画开始的位置&结束的位置
+    var fromRect = CGRectZero
+    var toRect = CGRectZero
+    /// 图片地址
+    var url : NSURL?
+    
+    
+    /// 图像视图 -> 用于动画
+    lazy var imageView : UIImageView = {
+        let iv = UIImageView()
+        
+        iv.contentMode = UIViewContentMode.ScaleAspectFit
+        iv.clipsToBounds = true
+        
+        return iv
+        
+    }()
+    
+    func prepareAnimator(fromRect:CGRect,toRect:CGRect,url:NSURL){
+        self.fromRect = fromRect
+        self.toRect = toRect
+        self.url = url
+    }
     
     /// 开始动画
     func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {

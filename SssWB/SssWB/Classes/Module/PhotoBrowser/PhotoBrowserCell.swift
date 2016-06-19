@@ -124,7 +124,7 @@ extension PhotoBrowserCell:UIScrollViewDelegate {
     
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
         var offectY = (scrollView.bounds.height - imageView.frame.height) * 0.5
-        var offectX = (scrollView.bounds.height - imageView.frame.height) * 0.5
+        var offectX = (scrollView.bounds.width - imageView.frame.width) * 0.5
 
         offectY = (offectY < 0) ? 0 : offectY
         offectX = (offectX < 0) ? 0 : offectX
