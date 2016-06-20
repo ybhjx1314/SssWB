@@ -50,8 +50,9 @@ class HomeTableViewController: BaseTableViewController {
             // 3.计算动画位置
             let fromRect = pickView.screenRect(indexPath)
             let toRect  = pickView.fullScreenRect(indexPath)
+
             
-            self?.photoAnimation.prepareAnimator(fromRect, toRect: toRect, url: urls[indexPath.item])
+            self?.photoAnimation.prepareAnimator(fromRect, toRect: toRect, url: urls[indexPath.item],picView:pickView)
             
             
             self?.presentViewController(vc, animated: true, completion: nil)

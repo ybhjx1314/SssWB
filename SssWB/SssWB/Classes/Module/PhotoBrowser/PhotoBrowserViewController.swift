@@ -16,17 +16,20 @@ class PhotoBrowserViewController: UIViewController {
     var urls :[NSURL]
     var selectedIndexPath : NSIndexPath
     
+    var currentImageIndexPath : NSIndexPath {
+        return collectionView.indexPathsForVisibleItems().last!
+    }
+    
+    var currentImageView : UIImageView {
+        let cell = collectionView.cellForItemAtIndexPath(currentImageIndexPath) as! PhotoBrowserCell
+        return cell.imageView
+    }
     
     // MARK: - 保存图片
     
     @objc func saveImage(){
         // 1 拿到图片
-        
-        let path = collectionView.indexPathsForVisibleItems().last!
-        
-        let cell = collectionView.cellForItemAtIndexPath(path) as! PhotoBrowserCell
-        
-        guard let image = cell.imageView.image else {
+        guard let image = currentImageView.image else {
             SVProgressHUD.showWithStatus("你麻痹,网络不给力")
             return
         }
@@ -165,9 +168,11 @@ class PhotoBrowserViewController: UIViewController {
     private lazy var closeBtn : UIButton = UIButton(title: "关闭", fontSize: 14)
     /// 分页控件
     private lazy var pageControl : UIPageControl = UIPageControl()
+    /// 照片缩放比例 - Swift 的 extension 中不能包含存储型属性
+    private var photoScale: CGFloat = 1
+   
     
 }
-
 extension PhotoBrowserViewController : UICollectionViewDelegate,UICollectionViewDataSource {
     // indexPath 是前一个cell的索引
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
@@ -181,7 +186,88 @@ extension PhotoBrowserViewController : UICollectionViewDelegate,UICollectionView
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(PhotoBrowserCellID, forIndexPath: indexPath) as! PhotoBrowserCell
         cell.url = urls[indexPath.item]
+        cell.photoDelegate = self
         return cell
     }
     
 }
+// MARK: - UIViewControllerInteractiveTransitioning - 交互式转场协议
+extension PhotoBrowserViewController: UIViewControllerInteractiveTransitioning {
+    
+    /// 开始交互转场
+    func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
+        view.transform = CGAffineTransformMakeScale(photoScale, photoScale)
+        view.alpha = photoScale
+    }
+}
+extension PhotoBrowserViewController :PhotoBrowserCellDelegate{
+    /// 完成缩放
+    func photoBrowserCellEndZoom() {
+        print("\(photoScale)")
+        if photoScale < 0.8 {
+            completeTransition(true)
+        } else {
+            UIView.animateWithDuration(0.25, animations: { () -> Void in
+                
+                self.view.transform = CGAffineTransformIdentity
+                self.view.alpha = 1.0
+                }, completion: { (_) in
+                    self.hideControllers(false)
+            })
+        }
+    }
+    
+    /// 照片视图缩放
+    func photoBrowserCellDidZoom(scale: CGFloat) {
+        // 记录缩放比例
+        print(scale)
+        photoScale = scale
+        hideControllers(scale < 1.0)
+        
+        if scale < 1.0 {
+            startInteractiveTransition(self)
+        } else {
+            view.transform = CGAffineTransformIdentity
+            view.alpha = 1.0
+        }
+    }
+    
+    private func hideControllers(isHidden:Bool){
+        closeBtn.hidden = isHidden
+        saveButton.hidden = isHidden
+        pageControl.hidden = (urls.count == 1) ? true :  isHidden
+        
+        view.backgroundColor = isHidden ? UIColor.clearColor() : UIColor.blackColor()
+        collectionView.backgroundColor = isHidden ? UIColor.clearColor() : UIColor.blackColor()
+        
+    }
+}
+
+// MARK: - UIViewControllerContextTransitioning - 转场上下文协议
+extension PhotoBrowserViewController: UIViewControllerContextTransitioning {
+    
+    /// 完成转场
+    func completeTransition(didComplete: Bool) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /// 容器视图
+    func containerView() -> UIView? { return view.superview }
+    
+    func isAnimated() -> Bool { return true }
+    func isInteractive() -> Bool { return true }
+    func transitionWasCancelled() -> Bool { return false }
+    func presentationStyle() -> UIModalPresentationStyle { return UIModalPresentationStyle.Custom }
+    
+    func updateInteractiveTransition(percentComplete: CGFloat) {}
+    func finishInteractiveTransition() {}
+    func cancelInteractiveTransition() {}
+    
+    func viewControllerForKey(key: String) -> UIViewController? { return nil }
+    func viewForKey(key: String) -> UIView? { return nil }
+    func targetTransform() -> CGAffineTransform { return CGAffineTransformIdentity }
+    
+    func initialFrameForViewController(vc: UIViewController) -> CGRect { return CGRectZero }
+    func finalFrameForViewController(vc: UIViewController) -> CGRect { return CGRectZero }
+}
+

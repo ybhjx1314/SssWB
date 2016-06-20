@@ -10,7 +10,18 @@ import UIKit
 import SDWebImage
 import SVProgressHUD
 
+/// 照片 Cell 代理方法
+protocol PhotoBrowserCellDelegate: NSObjectProtocol {
+    /// 照片视图完成缩放
+    func photoBrowserCellEndZoom()
+    /// 照片视图缩放
+    func photoBrowserCellDidZoom(scale: CGFloat)
+}
+
 class PhotoBrowserCell: UICollectionViewCell {
+    
+    /// 照片缩放代理
+    weak var photoDelegate: PhotoBrowserCellDelegate?
     
     var url : NSURL? {
         
@@ -122,6 +133,7 @@ extension PhotoBrowserCell:UIScrollViewDelegate {
     // 缩放的试图
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
         return imageView
+        
     }
     
     func scrollViewDidEndZooming(scrollView: UIScrollView, withView view: UIView?, atScale scale: CGFloat) {
@@ -134,10 +146,15 @@ extension PhotoBrowserCell:UIScrollViewDelegate {
         
         scrollView.contentInset = UIEdgeInsets(top: offectY
             , left: offectX, bottom: 0, right: 0 )
+        photoDelegate?.photoBrowserCellEndZoom()
         
         print("--------------")
         print(scrollView.contentSize)
         
+    }
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        // 通知代理缩放比例
+        photoDelegate?.photoBrowserCellDidZoom(imageView.transform.a)
     }
     
 }

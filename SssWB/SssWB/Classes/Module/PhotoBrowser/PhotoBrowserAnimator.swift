@@ -19,6 +19,7 @@ class PhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate{
     /// 图片地址
     var url : NSURL?
     
+    weak var picView :StatusPictureView?
     
     /// 图像视图 -> 用于动画
     lazy var imageView : ProgressImageView = {
@@ -31,7 +32,8 @@ class PhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate{
         
     }()
     
-    func prepareAnimator(fromRect:CGRect,toRect:CGRect,url:NSURL){
+    func prepareAnimator(fromRect:CGRect,toRect:CGRect,url:NSURL,picView:StatusPictureView){
+        self.picView = picView
         self.fromRect = fromRect
         self.toRect = toRect
         self.url = url
@@ -119,17 +121,28 @@ extension PhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
     ///
     ///  - parameter transitionContext: transitionContext上下文
     private func dismissAnimation(transitionContext: UIViewControllerContextTransitioning){
-        
-        
+        let fromVC = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)! as! PhotoBrowserViewController
+        let imageView = fromVC.currentImageView
         
         ///  拿到当前展现的试图-> fromView
         let fromView = transitionContext.viewForKey(UITransitionContextFromViewKey)!
         
-        UIView.animateWithDuration(transitionDuration(transitionContext), animations: { 
-            fromView.alpha = 0
+        fromView.removeFromSuperview()
+        /// 设置imageview的位子
+        imageView.center = fromView.center
+        
+        /// 叠加形变
+        let scale = fromVC.view.transform.a
+        imageView.transform = CGAffineTransformScale(imageView.transform, scale, scale)
+        imageView.alpha = scale
+        
+        transitionContext.containerView()?.addSubview(imageView)
+        
+        UIView.animateWithDuration(transitionDuration(transitionContext), animations: {
+            imageView.frame = self.picView!.screenRect(fromVC.currentImageIndexPath)
+            imageView.alpha = 1.0
             }) { (_) in
-                
-                fromView.removeFromSuperview()
+                imageView.removeFromSuperview()
                 transitionContext.completeTransition(true)
         }
         
