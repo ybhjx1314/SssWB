@@ -46,6 +46,7 @@
 		4CA944CD1CFFF8BB00DC427B /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA944CC1CFFF8BB00DC427B /* ComposeViewController.swift */; };
 		4CB1FF3F1D1291DA009DCC8B /* PhotoBrowserAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB1FF3E1D1291DA009DCC8B /* PhotoBrowserAnimator.swift */; };
 		4CBC5D511CF2EB0000BE6517 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5D501CF2EB0000BE6517 /* UserAccountViewModel.swift */; };
+		4CDBCCF11D17CF7B00004BB8 /* ProgressImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBCCF01D17CF7B00004BB8 /* ProgressImageView.swift */; };
 		4CE9A6261CF93BE80090DFEB /* ZZ_RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A6251CF93BE80090DFEB /* ZZ_RefreshControl.swift */; };
 		4CE9A62A1CF93C2F0090DFEB /* ZZ_RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE9A6291CF93C2F0090DFEB /* ZZ_RefreshView.xib */; };
 		4CEE4B461CEEF1EA002E5338 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE4B451CEEF1EA002E5338 /* OAuthViewController.swift */; };
@@ -98,6 +99,7 @@
 		4CA944CC1CFFF8BB00DC427B /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		4CB1FF3E1D1291DA009DCC8B /* PhotoBrowserAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserAnimator.swift; sourceTree = "<group>"; };
 		4CBC5D501CF2EB0000BE6517 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
+		4CDBCCF01D17CF7B00004BB8 /* ProgressImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressImageView.swift; sourceTree = "<group>"; };
 		4CE9A6251CF93BE80090DFEB /* ZZ_RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZ_RefreshControl.swift; sourceTree = "<group>"; };
 		4CE9A6291CF93C2F0090DFEB /* ZZ_RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZ_RefreshView.xib; sourceTree = "<group>"; };
 		4CEE4B451CEEF1EA002E5338 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				4C839BE81D112E3900A67383 /* PhotoBrowserViewController.swift */,
 				4C839BEA1D11392D00A67383 /* PhotoBrowserCell.swift */,
 				4CB1FF3E1D1291DA009DCC8B /* PhotoBrowserAnimator.swift */,
+				4CDBCCF01D17CF7B00004BB8 /* ProgressImageView.swift */,
 			);
 			path = PhotoBrowser;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				4CEE4B491CEEF5CB002E5338 /* NetworkTools.swift in Sources */,
 				4C1A99341CF827D100D7CE9E /* NormallCell.swift in Sources */,
 				4C839BED1D11422D00A67383 /* UIColor+Extension.swift in Sources */,
+				4CDBCCF11D17CF7B00004BB8 /* ProgressImageView.swift in Sources */,
 				4C1401BB1CF5BACF00E34ADB /* StatusCellBottomView.swift in Sources */,
 				4CF5645F1CF43138005BFBFB /* WelcomeViewController.swift in Sources */,
 				4C349F981CE4946000B7C0E3 /* HomeTableViewController.swift in Sources */,

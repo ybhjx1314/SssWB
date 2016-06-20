@@ -128,13 +128,9 @@ extension StatusPictureView : UICollectionViewDataSource,UICollectionViewDelegat
     func fullScreenRect(indexPath:NSIndexPath) -> CGRect{
         
         // 1 根据 拿到缩略图
-        let path = statusViewModel!.bmiddleURLs![indexPath.item].absoluteString
+        let path = statusViewModel!.thumbnailURLs![indexPath.item].absoluteString
         let image = SDWebImageManager.sharedManager().imageCache.imageFromDiskCacheForKey(path)
-        
-        if image == nil {
-            return CGRectZero;
-        }
-        
+
         // 2 根据图算比例
         
         // 2.1 计算比例

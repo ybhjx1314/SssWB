@@ -21,8 +21,8 @@ class PhotoBrowserAnimator: NSObject, UIViewControllerTransitioningDelegate{
     
     
     /// 图像视图 -> 用于动画
-    lazy var imageView : UIImageView = {
-        let iv = UIImageView()
+    lazy var imageView : ProgressImageView = {
+        let iv = ProgressImageView()
         
         iv.contentMode = UIViewContentMode.ScaleAspectFit
         iv.clipsToBounds = true
@@ -88,11 +88,16 @@ extension PhotoBrowserAnimator: UIViewControllerAnimatedTransitioning {
         // 2 下载图像
         imageView.sd_setImageWithURL(url, placeholderImage: nil, options: [SDWebImageOptions.RetryFailed], progress: { (current, total) in
             print("\(current) \(total) \(NSThread.currentThread())")
+            dispatch_async(dispatch_get_main_queue()) {
+                self.imageView.progress = CGFloat(current) / CGFloat(total)
+
+            }
+            
             }) { (image, error, _, _) in
                 
                 if error != nil {
                     printLog(error, logError: true)
-                    transitionContext.completeTransition(true)
+                    transitionContext.completeTransition(false)
                     return
                 }
                 
