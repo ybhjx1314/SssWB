@@ -48,6 +48,8 @@ class PhotoBrowserCell: UICollectionViewCell {
         scrollView.contentSize = CGSizeZero
         scrollView.contentOffset = CGPointZero
         scrollView.contentInset = UIEdgeInsetsZero
+        /// 重置imageview的形变属性
+        imageView.transform = CGAffineTransformIdentity
     }
     
     
@@ -122,7 +124,13 @@ class PhotoBrowserCell: UICollectionViewCell {
     private lazy var scrollView : UIScrollView = UIScrollView()
     
     ///  单张图片
-    lazy var imageView : UIImageView = UIImageView()
+    lazy var imageView : UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = UIViewContentMode.ScaleToFill
+        iv.clipsToBounds = true
+        
+        return iv
+    }()
     
     ///  指示器
     private lazy var indicatorView  = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)

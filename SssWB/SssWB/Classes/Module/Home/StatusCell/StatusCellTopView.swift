@@ -22,6 +22,8 @@ class StatusCellTopView: UIView {
             vipImageView.image = statusViewModel?.vipImage
             memImageView.image = statusViewModel?.mbRankImage
             //TODO: 处理 时间格式
+            print(statusViewModel?.status.created_at)
+            print(NSDate.sinaDate(statusViewModel!.status.created_at!))
 //            timeLabel.text = statusViewModel?.status.created_at
 //            fromLabel.text = statusViewModel?.status.source
             

@@ -30,6 +30,7 @@
 		4C349F9E1CE4948500B7C0E3 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C349F9D1CE4948500B7C0E3 /* ProfileTableViewController.swift */; };
 		4C3BB0C21CEC53F800A21E8F /* VistorLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BB0C11CEC53F800A21E8F /* VistorLoginView.swift */; };
 		4C4A69541CFD86B700CCE254 /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A69531CFD86B700CCE254 /* UIBarButtonItem+Extension.swift */; };
+		4C6C5C761D198F1F00054A27 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C6C5C751D198F1F00054A27 /* NSDate+Extension.swift */; };
 		4C72EE981CFFCEE50053DC0B /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72EE971CFFCEE50053DC0B /* UIImage+Extension.swift */; };
 		4C72EE9B1CFFCF2A0053DC0B /* PictureSelectorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C72EE9A1CFFCF2A0053DC0B /* PictureSelectorVC.swift */; };
 		4C75F8F11D0E637D006F9DCF /* EmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C75F8E91D0E637D006F9DCF /* EmoticonAttachment.swift */; };
@@ -83,6 +84,7 @@
 		4C349F9D1CE4948500B7C0E3 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		4C3BB0C11CEC53F800A21E8F /* VistorLoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VistorLoginView.swift; sourceTree = "<group>"; };
 		4C4A69531CFD86B700CCE254 /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		4C6C5C751D198F1F00054A27 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		4C72EE971CFFCEE50053DC0B /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		4C72EE9A1CFFCF2A0053DC0B /* PictureSelectorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PictureSelectorVC.swift; sourceTree = "<group>"; };
 		4C75F8E91D0E637D006F9DCF /* EmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonAttachment.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				4C00BC631CF6B5AB008DE973 /* UIButton+Extension.swift */,
 				4C4A69531CFD86B700CCE254 /* UIBarButtonItem+Extension.swift */,
 				4C839BEC1D11422D00A67383 /* UIColor+Extension.swift */,
+				4C6C5C751D198F1F00054A27 /* NSDate+Extension.swift */,
 			);
 			name = "extensions(扩展)";
 			path = extensions;
@@ -512,6 +515,7 @@
 				4C4A69541CFD86B700CCE254 /* UIBarButtonItem+Extension.swift in Sources */,
 				4C75F8F41D0E637D006F9DCF /* Emoticon.swift in Sources */,
 				4CBC5D511CF2EB0000BE6517 /* UserAccountViewModel.swift in Sources */,
+				4C6C5C761D198F1F00054A27 /* NSDate+Extension.swift in Sources */,
 				4C0555D51CF05C05002FEFEF /* CommTools.swift in Sources */,
 				4C1401B21CF5499C00E34ADB /* UIView+AutoLayout.swift in Sources */,
 				4C054FC81CF5F4EC002DF5D2 /* UILabel+Extension.swift in Sources */,
