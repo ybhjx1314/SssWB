@@ -24,6 +24,9 @@
 		4C1A99321CF7EF5100D7CE9E /* ForwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A99311CF7EF5100D7CE9E /* ForwardCell.swift */; };
 		4C1A99341CF827D100D7CE9E /* NormallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1A99331CF827D100D7CE9E /* NormallCell.swift */; };
 		4C1B93E31CF34846001CDFF5 /* NewFeatureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1B93E21CF34846001CDFF5 /* NewFeatureVC.swift */; };
+		4C24B7861D1ACF1A006AB74D /* ORcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24B7851D1ACF1A006AB74D /* ORcodeViewController.swift */; };
+		4C24B7881D1ACF26006AB74D /* ORcode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C24B7871D1ACF26006AB74D /* ORcode.storyboard */; };
+		4C24B78A1D1ACFC1006AB74D /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C24B7891D1ACFC1006AB74D /* UIStoryboard+Extension.swift */; };
 		4C349F981CE4946000B7C0E3 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C349F971CE4946000B7C0E3 /* HomeTableViewController.swift */; };
 		4C349F9A1CE4946F00B7C0E3 /* MessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C349F991CE4946F00B7C0E3 /* MessagesTableViewController.swift */; };
 		4C349F9C1CE4947B00B7C0E3 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C349F9B1CE4947B00B7C0E3 /* DiscoverTableViewController.swift */; };
@@ -78,6 +81,9 @@
 		4C1A99311CF7EF5100D7CE9E /* ForwardCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForwardCell.swift; sourceTree = "<group>"; };
 		4C1A99331CF827D100D7CE9E /* NormallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormallCell.swift; sourceTree = "<group>"; };
 		4C1B93E21CF34846001CDFF5 /* NewFeatureVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewFeatureVC.swift; sourceTree = "<group>"; };
+		4C24B7851D1ACF1A006AB74D /* ORcodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ORcodeViewController.swift; sourceTree = "<group>"; };
+		4C24B7871D1ACF26006AB74D /* ORcode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ORcode.storyboard; sourceTree = "<group>"; };
+		4C24B7891D1ACFC1006AB74D /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		4C349F971CE4946000B7C0E3 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		4C349F991CE4946F00B7C0E3 /* MessagesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesTableViewController.swift; sourceTree = "<group>"; };
 		4C349F9B1CE4947B00B7C0E3 /* DiscoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +152,7 @@
 				4C4A69531CFD86B700CCE254 /* UIBarButtonItem+Extension.swift */,
 				4C839BEC1D11422D00A67383 /* UIColor+Extension.swift */,
 				4C6C5C751D198F1F00054A27 /* NSDate+Extension.swift */,
+				4C24B7891D1ACFC1006AB74D /* UIStoryboard+Extension.swift */,
 			);
 			name = "extensions(扩展)";
 			path = extensions;
@@ -172,6 +179,16 @@
 			);
 			name = "NewFeature(新特性)";
 			path = NewFeature;
+			sourceTree = "<group>";
+		};
+		4C24B7821D1ACED0006AB74D /* ORcode(二维码) */ = {
+			isa = PBXGroup;
+			children = (
+				4C24B7851D1ACF1A006AB74D /* ORcodeViewController.swift */,
+				4C24B7871D1ACF26006AB74D /* ORcode.storyboard */,
+			);
+			name = "ORcode(二维码)";
+			path = ORcode;
 			sourceTree = "<group>";
 		};
 		4C4A69501CFD652200CCE254 /* Compose */ = {
@@ -321,6 +338,7 @@
 		4CF297021CE4606C0097B999 /* Module(功能模块) */ = {
 			isa = PBXGroup;
 			children = (
+				4C24B7821D1ACED0006AB74D /* ORcode(二维码) */,
 				4C839BE71D112E3900A67383 /* PhotoBrowser */,
 				4C4A69501CFD652200CCE254 /* Compose */,
 				4C1B93E11CF347B7001CDFF5 /* NewFeature(新特性) */,
@@ -450,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C24B7881D1ACF26006AB74D /* ORcode.storyboard in Resources */,
 				4CE9A62A1CF93C2F0090DFEB /* ZZ_RefreshView.xib in Resources */,
 				4C75F8F21D0E637D006F9DCF /* Emoticons.bundle in Resources */,
 				4CF296F61CE42E8B0097B999 /* Assets.xcassets in Resources */,
@@ -524,6 +543,7 @@
 				4C1A99301CF6F0CF00D7CE9E /* StatusPictureView.swift in Sources */,
 				4C72EE981CFFCEE50053DC0B /* UIImage+Extension.swift in Sources */,
 				4C349F9E1CE4948500B7C0E3 /* ProfileTableViewController.swift in Sources */,
+				4C24B7861D1ACF1A006AB74D /* ORcodeViewController.swift in Sources */,
 				4CEE4B461CEEF1EA002E5338 /* OAuthViewController.swift in Sources */,
 				4CA944CD1CFFF8BB00DC427B /* ComposeViewController.swift in Sources */,
 				4CEE4B491CEEF5CB002E5338 /* NetworkTools.swift in Sources */,
@@ -548,6 +568,7 @@
 				4CF296EF1CE42E8B0097B999 /* AppDelegate.swift in Sources */,
 				4C1401B71CF5B9DB00E34ADB /* StatusCell.swift in Sources */,
 				4C75F8F31D0E637D006F9DCF /* EmoticonViewController.swift in Sources */,
+				4C24B78A1D1ACFC1006AB74D /* UIStoryboard+Extension.swift in Sources */,
 				4C349F9C1CE4947B00B7C0E3 /* DiscoverTableViewController.swift in Sources */,
 				4C054FCA1CF5F991002DF5D2 /* User.swift in Sources */,
 				4C054FCC1CF60499002DF5D2 /* StatusViewModel.swift in Sources */,
