@@ -29,7 +29,9 @@ class StatusCell: UITableViewCell {
         didSet{
             
             topView.statusViewModel = statusViewModel
-            contentLabel.text = statusViewModel?.status.text
+            let statusText = statusViewModel?.status.text ?? ""
+            print(statusText)
+            contentLabel.attributedText = EmoticonViewModel.sharedViewModel.emoticonText(statusText, font: contentLabel.font)
             picWidthCons?.constant = pictureItemWidth
             
             pictureView.statusViewModel = statusViewModel

@@ -12,7 +12,8 @@ class ForwardCell: StatusCell {
     
     override var statusViewModel: StatusViewModel?{
         didSet{
-            forwordLabel.text = statusViewModel?.forwordText
+            let statusText = statusViewModel?.forwordText ?? ""
+            forwordLabel.attributedText = EmoticonViewModel.sharedViewModel.emoticonText(statusText, font: forwordLabel.font)
         }
     }
     

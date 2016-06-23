@@ -14,6 +14,62 @@ class EmoticonViewModel {
     static let sharedViewModel = EmoticonViewModel()
     
     lazy var packages = [EmoticonPackage]()
+    
+    ///  根据给定的表情 生成对应的属性字符串
+    func emoticonText(str: String , font:UIFont) -> NSAttributedString {
+        /// 正则表达式
+        let pattern = "\\[.*?\\]"
+        
+        let regex = try! NSRegularExpression(pattern: pattern, options: [])
+        /// 根据正则获得每一个符合规则的对象在字符串中的位置
+        let results = regex.matchesInString(str, options: [], range: NSRange(location: 0, length: (str as NSString).length))
+        /// 确定循环次数
+        var count = results.count
+        /// 创建可变属性字符串
+        let retStr = NSMutableAttributedString(string: str)
+        
+        while count > 0 {
+            count = count - 1
+            
+            let range = results[count].rangeAtIndex(0)
+            
+            let chs = (str as NSString).substringWithRange(range)
+            
+            if let emoticon = emoticon(chs) {
+                let imageText = EmoticonAttachment.emoticonAttributeText(emoticon, font: font)
+                
+                retStr.replaceCharactersInRange(range, withAttributedString: imageText)
+            }
+            
+        }
+        
+        return retStr
+    }
+    
+    
+    ///  根据字符串查找表情
+    ///
+    ///  - parameter str: 表情字符串
+    ///
+    ///  - returns: 表情对象
+    func emoticon(str:String) -> Emoticon? {
+        var emotiocn : Emoticon?
+        
+        for p in packages {
+            /// 从数组中找对应属性的元素
+//            emotiocn = p.emoticons.filter({ (em) -> Bool in
+//                return em.chs == str
+//            }).last
+            /// 简单写法
+            emotiocn = p.emoticons.filter() {$0.chs == str}.last
+            
+            if emotiocn != nil {
+                break
+            }
+        }
+        return emotiocn
+    }
+    
     /// 加载表情包
     init () {
         loadPackages()
