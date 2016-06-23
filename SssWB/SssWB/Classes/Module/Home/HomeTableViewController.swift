@@ -21,6 +21,8 @@ class HomeTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightTopBtn)
+        
         if  !UserAccountViewModel.sharedUserAccount.userLogon {
             visterView?.setupInfo(nil, message: "关注一些人，回这里看看有什么惊喜")
             return;
@@ -94,6 +96,10 @@ class HomeTableViewController: BaseTableViewController {
         }
     }
     
+    @objc  func changORcodeVC(){
+        presentViewController(UIStoryboard.initialViewController("ORcode"), animated: true, completion: nil)
+    }
+    
     private func showPulldownTips(count:Int){
         printLog(count)
         let title = count == 0 ? "没有最新微博" : "刷新到 \(count)条微博"
@@ -143,6 +149,17 @@ class HomeTableViewController: BaseTableViewController {
         indicator.color = UIColor.darkGrayColor()
         return indicator
     
+    }()
+    
+    // MARK: - 扫一扫按钮
+    private lazy var rightTopBtn : UIButton = {
+       let btn = UIButton()
+        
+        btn.setImage(UIImage(named: "navigationbar_pop"), forState: UIControlState.Normal)
+        btn.setImage(UIImage(named:"navigationbar_pop_highlighted"), forState: UIControlState.Highlighted)
+        btn.frame = CGRectMake(0, 0, 30, 30)
+        btn.addTarget(self, action: #selector(HomeTableViewController.changORcodeVC), forControlEvents: .TouchUpInside)
+        return btn
     }()
 
 }
