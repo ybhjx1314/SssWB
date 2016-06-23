@@ -49,6 +49,9 @@
 		4CBC5D511CF2EB0000BE6517 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5D501CF2EB0000BE6517 /* UserAccountViewModel.swift */; };
 		4CDBCCF11D17CF7B00004BB8 /* ProgressImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CDBCCF01D17CF7B00004BB8 /* ProgressImageView.swift */; };
 		4CE335B21D1A6AC9000C50F4 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE335B11D1A6AC9000C50F4 /* String+Extension.swift */; };
+		4CE335B61D1B7C37000C50F4 /* ORcode.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CE335B41D1B7C37000C50F4 /* ORcode.storyboard */; };
+		4CE335B71D1B7C37000C50F4 /* ORcodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE335B51D1B7C37000C50F4 /* ORcodeViewController.swift */; };
+		4CE335B91D1B7C4D000C50F4 /* UIStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE335B81D1B7C4D000C50F4 /* UIStoryboard+Extension.swift */; };
 		4CE9A6261CF93BE80090DFEB /* ZZ_RefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE9A6251CF93BE80090DFEB /* ZZ_RefreshControl.swift */; };
 		4CE9A62A1CF93C2F0090DFEB /* ZZ_RefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CE9A6291CF93C2F0090DFEB /* ZZ_RefreshView.xib */; };
 		4CEE4B461CEEF1EA002E5338 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE4B451CEEF1EA002E5338 /* OAuthViewController.swift */; };
@@ -104,6 +107,9 @@
 		4CBC5D501CF2EB0000BE6517 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		4CDBCCF01D17CF7B00004BB8 /* ProgressImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressImageView.swift; sourceTree = "<group>"; };
 		4CE335B11D1A6AC9000C50F4 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		4CE335B41D1B7C37000C50F4 /* ORcode.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ORcode.storyboard; sourceTree = "<group>"; };
+		4CE335B51D1B7C37000C50F4 /* ORcodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ORcodeViewController.swift; sourceTree = "<group>"; };
+		4CE335B81D1B7C4D000C50F4 /* UIStoryboard+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Extension.swift"; sourceTree = "<group>"; };
 		4CE9A6251CF93BE80090DFEB /* ZZ_RefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZZ_RefreshControl.swift; sourceTree = "<group>"; };
 		4CE9A6291CF93C2F0090DFEB /* ZZ_RefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZZ_RefreshView.xib; sourceTree = "<group>"; };
 		4CEE4B451CEEF1EA002E5338 /* OAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 		4C054FC61CF5F4D7002DF5D2 /* extensions(扩展) */ = {
 			isa = PBXGroup;
 			children = (
+				4CE335B81D1B7C4D000C50F4 /* UIStoryboard+Extension.swift */,
 				4C72EE971CFFCEE50053DC0B /* UIImage+Extension.swift */,
 				4C054FC71CF5F4EC002DF5D2 /* UILabel+Extension.swift */,
 				4C00BC631CF6B5AB008DE973 /* UIButton+Extension.swift */,
@@ -238,6 +245,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4CE335B31D1B7C37000C50F4 /* ORcode */ = {
+			isa = PBXGroup;
+			children = (
+				4CE335B41D1B7C37000C50F4 /* ORcode.storyboard */,
+				4CE335B51D1B7C37000C50F4 /* ORcodeViewController.swift */,
+			);
+			path = ORcode;
+			sourceTree = "<group>";
+		};
 		4CE9A6241CF93B690090DFEB /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +340,7 @@
 		4CF297021CE4606C0097B999 /* Module(功能模块) */ = {
 			isa = PBXGroup;
 			children = (
+				4CE335B31D1B7C37000C50F4 /* ORcode */,
 				4C839BE71D112E3900A67383 /* PhotoBrowser */,
 				4C4A69501CFD652200CCE254 /* Compose */,
 				4C1B93E11CF347B7001CDFF5 /* NewFeature(新特性) */,
@@ -453,6 +470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE335B61D1B7C37000C50F4 /* ORcode.storyboard in Resources */,
 				4CE9A62A1CF93C2F0090DFEB /* ZZ_RefreshView.xib in Resources */,
 				4C75F8F21D0E637D006F9DCF /* Emoticons.bundle in Resources */,
 				4CF296F61CE42E8B0097B999 /* Assets.xcassets in Resources */,
@@ -530,6 +548,7 @@
 				4CEE4B461CEEF1EA002E5338 /* OAuthViewController.swift in Sources */,
 				4CA944CD1CFFF8BB00DC427B /* ComposeViewController.swift in Sources */,
 				4CEE4B491CEEF5CB002E5338 /* NetworkTools.swift in Sources */,
+				4CE335B71D1B7C37000C50F4 /* ORcodeViewController.swift in Sources */,
 				4C1A99341CF827D100D7CE9E /* NormallCell.swift in Sources */,
 				4C839BED1D11422D00A67383 /* UIColor+Extension.swift in Sources */,
 				4CDBCCF11D17CF7B00004BB8 /* ProgressImageView.swift in Sources */,
@@ -540,6 +559,7 @@
 				4CF297101CE46D720097B999 /* MainController.swift in Sources */,
 				4CB1FF3F1D1291DA009DCC8B /* PhotoBrowserAnimator.swift in Sources */,
 				4C839BEB1D11392D00A67383 /* PhotoBrowserCell.swift in Sources */,
+				4CE335B91D1B7C4D000C50F4 /* UIStoryboard+Extension.swift in Sources */,
 				4C054FC31CF49C73002DF5D2 /* Status.swift in Sources */,
 				4C3BB0C21CEC53F800A21E8F /* VistorLoginView.swift in Sources */,
 				4C9D1E161CEB3CCC00A7F772 /* BaseTableViewController.swift in Sources */,
