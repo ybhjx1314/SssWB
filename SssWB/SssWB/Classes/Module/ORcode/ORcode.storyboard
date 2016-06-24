@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU6-qv-1yT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aU6-qv-1yT">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -22,9 +22,12 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="二维码" image="qrcode_tabbar_icon_qrcode" id="yS1-hf-r25"/>
-                                    <tabBarItem title="条形码" image="qrcode_tabbar_icon_barcode" id="dAe-0o-WTB"/>
+                                    <tabBarItem tag="1" title="条形码" image="qrcode_tabbar_icon_barcode" id="dAe-0o-WTB"/>
                                 </items>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wxq-hu-Rqq" id="jS3-U2-odo"/>
+                                </connections>
                             </tabBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBs-QR-77g">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
@@ -69,8 +72,10 @@
                     </navigationItem>
                     <connections>
                         <outlet property="anmiationLayout" destination="Htg-dI-Hxc" id="4mo-ad-CXV"/>
+                        <outlet property="sacImageView" destination="Hdf-ja-8vR" id="3e7-lr-XyW"/>
                         <outlet property="tabbar" destination="cQ9-cf-Ta2" id="VP9-Pl-4mn"/>
-                        <outlet property="viewHeight" destination="6KG-I7-UzD" id="qW1-WL-OKG"/>
+                        <outlet property="viewHeight" destination="dfx-kH-Oof" id="XSt-kz-s0b"/>
+                        <outlet property="viewWidth" destination="6KG-I7-UzD" id="6F3-Yc-FNO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIQ-vt-JAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
