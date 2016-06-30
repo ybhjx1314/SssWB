@@ -12,7 +12,7 @@ import UIKit
 private let EmoticonViewCellID = "EmoticonViewCellID"
 
 /// 表情控制器
-class EmoticonViewController: UIViewController {
+class EmoticonViewController: UIView {
     
     var selectedEmoticonBlock:(emoticon:Emoticon)->()
     
@@ -20,7 +20,9 @@ class EmoticonViewController: UIViewController {
         
         selectedEmoticonBlock = selectedEmoticon
         
-        super.init(nibName: nil, bundle: nil)
+        let rect = UIScreen.mainScreen().bounds
+        super.init(frame: CGRectMake(0, 0, rect.width, 216))
+        setupUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,25 +37,11 @@ class EmoticonViewController: UIViewController {
         collectioniew.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
         
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = UIColor.lightGrayColor()
-        
-        setupUI()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-//        print(view)
-    }
-
     // MARK: - 搭建界面
     private func setupUI(){
         //1 添加视图
-        view.addSubview(collectioniew)
-        view.addSubview(toolbar)
+        self.addSubview(collectioniew)
+        self.addSubview(toolbar)
         
         //2 设置约束
         collectioniew.translatesAutoresizingMaskIntoConstraints = false
@@ -61,9 +49,9 @@ class EmoticonViewController: UIViewController {
         
         let viewDict = ["tb":toolbar,"cv":collectioniew]
         
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[cv]-0-|", options: [], metrics: nil, views: viewDict))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tb]-0-|", options: [], metrics: nil, views: viewDict))
-        view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[cv]-[tb(44)]-0-|", options: [], metrics: nil, views: viewDict))
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[cv]-0-|", options: [], metrics: nil, views: viewDict))
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-0-[tb]-0-|", options: [], metrics: nil, views: viewDict))
+        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[cv]-[tb(44)]-0-|", options: [], metrics: nil, views: viewDict))
         
         //3 准备控件
         createToolbar()

@@ -31,7 +31,7 @@ class ComposeViewController: UIViewController, UITextViewDelegate {
         textView.resignFirstResponder()
         
         // 切换键盘
-        textView.inputView = (textView.inputView == nil) ? keyboardVC.view : nil
+        textView.inputView = (textView.inputView == nil) ? keyboardVC : nil
         
         // 激活焦点
         textView.becomeFirstResponder()

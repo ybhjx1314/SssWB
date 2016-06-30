@@ -60,6 +60,7 @@
 		4CF296F61CE42E8B0097B999 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF296F51CE42E8B0097B999 /* Assets.xcassets */; };
 		4CF297101CE46D720097B999 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF2970F1CE46D720097B999 /* MainController.swift */; };
 		4CF5645F1CF43138005BFBFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF5645E1CF43138005BFBFB /* WelcomeViewController.swift */; };
+		4CF97A291D2120CE0044FDFB /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF97A281D2120CE0044FDFB /* QRCodeViewController.swift */; };
 		A30C89B77C55D9EC9067E5CE /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0CD8A6A2723AF990B207EF8 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		4CF296FA1CE42E8B0097B999 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CF2970F1CE46D720097B999 /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		4CF5645E1CF43138005BFBFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		4CF97A281D2120CE0044FDFB /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		A0CD8A6A2723AF990B207EF8 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7BF55CD6DFBD0D086A6383F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +252,7 @@
 			children = (
 				4CE335B41D1B7C37000C50F4 /* ORcode.storyboard */,
 				4CE335B51D1B7C37000C50F4 /* ORcodeViewController.swift */,
+				4CF97A281D2120CE0044FDFB /* QRCodeViewController.swift */,
 			);
 			path = ORcode;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				TargetAttributes = {
 					4CF296EA1CE42E8B0097B999 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = CFAA23U7FE;
 					};
 				};
 			};
@@ -536,6 +540,7 @@
 				4C4A69541CFD86B700CCE254 /* UIBarButtonItem+Extension.swift in Sources */,
 				4C75F8F41D0E637D006F9DCF /* Emoticon.swift in Sources */,
 				4CBC5D511CF2EB0000BE6517 /* UserAccountViewModel.swift in Sources */,
+				4CF97A291D2120CE0044FDFB /* QRCodeViewController.swift in Sources */,
 				4C6C5C761D198F1F00054A27 /* NSDate+Extension.swift in Sources */,
 				4C0555D51CF05C05002FEFEF /* CommTools.swift in Sources */,
 				4C1401B21CF5499C00E34ADB /* UIView+AutoLayout.swift in Sources */,
@@ -678,12 +683,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SssWB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meicai.cn.SssWB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meicai.cn.SssWBB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -694,12 +702,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SssWB/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -D DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.meicai.cn.SssWB;
+				PRODUCT_BUNDLE_IDENTIFIER = com.meicai.cn.SssWBB;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

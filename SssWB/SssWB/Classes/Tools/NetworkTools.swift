@@ -152,7 +152,7 @@ class NetworkTools: AFHTTPSessionManager {
             }
             
             // 1. 调用 AFN 的上传文件方法
-            self.POST(URLString, parameters: parameters, constructingBodyWithBlock: { (formData) -> Void in
+            self.POST(URLString, parameters: parameters, constructingBodyWithBlock: { (formData) in
                 
                 // 将图像转换成二进制数据
                 let data = UIImagePNGRepresentation(image)!
@@ -171,17 +171,44 @@ class NetworkTools: AFHTTPSessionManager {
                  
                  */
                 formData.appendPartWithFileData(data, name: "pic", fileName: "ohoh", mimeType: "application/octet-stream")
-                
-                }, success: { (_, result) -> Void in
-                    
+                }, progress: nil, success: { (_, result) in
                     subscriber.sendNext(result)
                     subscriber.sendCompleted()
-                    
-                }, failure: { (_, error) -> Void in
+                }, failure: { (_, error) in
                     printLog(error, logError: true)
                     
                     subscriber.sendError(error)
             })
+//            self.POST(URLString, parameters: parameters, constructingBodyWithBlock: { (formData) -> Void in
+//                
+//                // 将图像转换成二进制数据
+//                let data = UIImagePNGRepresentation(image)!
+//                
+//                // formData 是遵守协议的对象，AFN内部提供的，使用的时候，只需要按照协议方法传递参数即可！
+//                /**
+//                 1. 要上传图片的二进制数据
+//                 2. 服务器的字段名，开发的时候，咨询后台
+//                 3. 保存在服务器的文件名，很多后台允许随便写
+//                 4. mimeType -> 客户端告诉服务器上传文件的类型，格式
+//                 大类/小类
+//                 image/jpg
+//                 image/gif
+//                 image/png
+//                 如果，不想告诉服务器具体的类型，可以使用 application/octet-stream
+//                 
+//                 */
+//                formData.appendPartWithFileData(data, name: "pic", fileName: "ohoh", mimeType: "application/octet-stream")
+//                
+//                }, success: { (_, result) -> Void in
+//                    
+//                    subscriber.sendNext(result)
+//                    subscriber.sendCompleted()
+//                    
+//                }, failure: { (_, error) -> Void in
+//                    printLog(error, logError: true)
+//                    
+//                    subscriber.sendError(error)
+//            })
             
             return nil
         }

@@ -29,17 +29,19 @@
                                     <outlet property="delegate" destination="wxq-hu-Rqq" id="jS3-U2-odo"/>
                                 </connections>
                             </tabBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBs-QR-77g">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dBs-QR-77g">
                                 <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_border" translatesAutoresizingMaskIntoConstraints="NO" id="BIn-kP-7NA">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_scanline_qrcode" translatesAutoresizingMaskIntoConstraints="NO" id="Hdf-ja-8vR">
                                         <rect key="frame" x="0.0" y="-200" width="200" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Hdf-ja-8vR" firstAttribute="centerX" secondItem="dBs-QR-77g" secondAttribute="centerX" id="5xz-jX-UHD"/>
                                     <constraint firstAttribute="width" constant="200" id="6KG-I7-UzD"/>
@@ -53,13 +55,24 @@
                                     <constraint firstItem="Hdf-ja-8vR" firstAttribute="height" secondItem="dBs-QR-77g" secondAttribute="height" id="tRo-c9-VN9"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IpE-Nm-cgf">
+                                <rect key="frame" x="270" y="488" width="60" height="30"/>
+                                <state key="normal" title="我的名片">
+                                    <color key="titleColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mg8-kg-Xw1" kind="show" id="GwP-fH-98C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cQ9-cf-Ta2" firstAttribute="leading" secondItem="I6R-st-a8E" secondAttribute="leading" id="2nV-4d-ul0"/>
                             <constraint firstAttribute="trailing" secondItem="cQ9-cf-Ta2" secondAttribute="trailing" id="DYe-mr-rCA"/>
                             <constraint firstItem="i3S-0u-whb" firstAttribute="top" secondItem="cQ9-cf-Ta2" secondAttribute="bottom" id="MTM-bE-Z7U"/>
+                            <constraint firstItem="IpE-Nm-cgf" firstAttribute="centerX" secondItem="I6R-st-a8E" secondAttribute="centerX" id="Ww8-RR-Y5B"/>
                             <constraint firstItem="dBs-QR-77g" firstAttribute="centerY" secondItem="I6R-st-a8E" secondAttribute="centerY" id="Zol-ku-usI"/>
+                            <constraint firstItem="cQ9-cf-Ta2" firstAttribute="top" secondItem="IpE-Nm-cgf" secondAttribute="bottom" constant="33" id="oQl-Gk-MkW"/>
                             <constraint firstItem="dBs-QR-77g" firstAttribute="centerX" secondItem="I6R-st-a8E" secondAttribute="centerX" id="r4z-bT-EDm"/>
                         </constraints>
                     </view>
@@ -81,6 +94,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIQ-vt-JAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="927" y="155"/>
+        </scene>
+        <!--Code View Controller-->
+        <scene sceneID="zrP-Sm-u1N">
+            <objects>
+                <viewController id="mg8-kg-Xw1" customClass="QRCodeViewController" customModule="SssWB" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7Yj-Yd-tCr"/>
+                        <viewControllerLayoutGuide type="bottom" id="85K-yL-Pkk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mkE-hC-7rb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dm2-6S-ANJ">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="6dY-7D-pnQ"/>
+                                    <constraint firstAttribute="width" constant="200" id="iy7-a0-Gef"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dm2-6S-ANJ" firstAttribute="centerY" secondItem="mkE-hC-7rb" secondAttribute="centerY" id="PBn-me-zEW"/>
+                            <constraint firstItem="dm2-6S-ANJ" firstAttribute="centerX" secondItem="mkE-hC-7rb" secondAttribute="centerX" id="SmV-Vq-Le7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="icomImage" destination="dm2-6S-ANJ" id="71U-Ol-4xa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ifh-tF-aNi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1580" y="155"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="J6j-eZ-Rnu">
